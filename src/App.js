@@ -4,6 +4,10 @@ import './App.css';
 import {connect} from 'react-redux';
 import {Route, withRouter} from 'react-router-dom';
 
+import PostList from './components/PostList';
+import NavBar from './components/Nav';
+import PostDetail from './components/PostDetail';
+
 
 class App extends Component {
 

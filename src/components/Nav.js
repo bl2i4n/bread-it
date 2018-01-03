@@ -9,7 +9,7 @@ class NavBar extends Component {
     });
   }
   render() {
-    cons {dispatch, categories} = this.props;
+    const {dispatch, categories} = this.props;
     return (
       <nav id="navbar">
         <Link to="/" onClick={() => this.getHomePosts()}>
