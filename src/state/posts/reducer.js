@@ -1,8 +1,9 @@
 import {
-   COMMENTS_SET,
-   COMMENTS_CREATE,
-   COMMENTS_UPDATE,
-   COMMENTS_DELETE
+     POSTS_CREATE,
+     POSTS_UPDATE,
+     POSTS_DELETE,
+     POSTS_SORT,
+     POSTS_SET
 } from './constants';
 
 const defaultState = {
@@ -14,16 +15,20 @@ export default (state = defaultState, action) => {
    const { type, data } = action;
 
    switch(type) {
-       case COMMENTS_SET:
+       case POSTS_SET:
            return Object.assign({}, state, {
-               items: data.comments
+               items: data.posts
            });
-       case COMMENTS_CREATE:
+       case POSTS_CREATE:
            return state;
-       case COMMENTS_UPDATE:
+       case POSTS_UPDATE:
            return state;
-       case COMMENTS_DELETE:
+       case POSTS_DELETE:
            return state;
+       case POSTS_SORT:
+           return Object.assign({}, state, {
+               order: data.property
+           });
        default:
            return state;
    }

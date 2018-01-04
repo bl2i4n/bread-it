@@ -1,39 +1,39 @@
 import {
-     COMMENTS_SET,
-     COMMENTS_CREATE,
-     COMMENTS_UPDATE,
-     COMMENTS_DELETE,
-     COMMENTS_SORT
+     POSTS_CREATE,
+     POSTS_UPDATE,
+     POSTS_DELETE,
+     POSTS_SORT,
+     POSTS_SET
  } from './constants';
 
  const propList = [
      'id',
-     'parentId',
      'timestamp',
+     'title',
      'body',
      'author',
+     'category',
      'voteScore',
-     'deleted',
-     'parentDeleted'
+     'deleted'
  ];
 
- export const commentsSort = (property) => {
+ export const postsSort = (property) => {
      if (propList.indexOf(property) === -1) {
          return {};
      }
      return {
-         type: COMMENTS_SORT,
+         type: POSTS_SORT,
          data: {
              property
          }
      }
  };
 
- export const commentsSet = (comments) => {
+ export const postsSet = (posts) => {
      return {
-         type: COMMENTS_SET,
+         type: POSTS_SET,
          data: {
-             comments
+             posts
          }
      }
  }
