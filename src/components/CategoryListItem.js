@@ -1,8 +1,20 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
+import {fetchCategoryPosts} from '../utils/readableAPI';
+import {postsSet} from '../state/posts/actions';
+
 class CategoryListItem extends Component {
   render(){
+    getCategoryPosts = () => {
+      const {dispatch, category} = this.props;
+      fetchCategoryPosts(category.path).then(
+        (posts) => {
+          dispatch(postsSet(posts));
+        }
+      );
+    }
+
     const {category} = this.props;
     return (
       <div className="category">

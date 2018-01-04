@@ -1,13 +1,23 @@
 import React, {Component} from 'react';
+import CommentDetail from './components/CommentDetail';
+import {fetchPostComments} from '../utils/readableAPI';
+import {commentsSet} from '../state/comments/actions';
 
 class PostComments extends Component {
+  componentDidMount(){
+    const {postId, dispatch} = this.props;
+    fetchPostComments(postId).then((rest) => {
+      dispatch(commentsSet(rest));
+    });
+  };
+
   render(){
     const {comments} = this.props;
     return (
       <div>
         {comments.map((comment) => {
           return (
-            <Comments comment={comment} />
+            <CommentDetail comment={comment} />
           )
         })}
       </div>

@@ -18,7 +18,7 @@ export const fetchPosts = () => {
     .then((res) => res.json())
 };
 
-export const fetchPostById = (id) => {
+export const fetchPostByID = (id) => {
   return fetch(`http://localhost:3001/posts/${id}`, {headers})
     .then((rest) => res.json())
 };

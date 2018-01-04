@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
+import CategoryList from './components/CategoryList';
+import {fetchPosts} from '../utils/readableAPI';
+import {postsSet} from '../state/posts/actions';
+
 class NavBar extends Component {
   getHomePosts = () => {
     const {dispatch} = this.props;
@@ -8,6 +12,7 @@ class NavBar extends Component {
       dispatch(postsSet(posts));
     });
   }
+  
   render() {
     const {dispatch, categories} = this.props;
     return (
