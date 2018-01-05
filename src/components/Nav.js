@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-import CategoryList from './components/CategoryList';
+import CategoryList from './CategoryList';
 import {fetchPosts} from '../utils/readableAPI';
 import {postsSet} from '../state/posts/actions';
 
@@ -12,7 +12,7 @@ class NavBar extends Component {
       dispatch(postsSet(posts));
     });
   }
-  
+
   render() {
     const {dispatch, categories} = this.props;
     return (
@@ -20,7 +20,10 @@ class NavBar extends Component {
         <Link to="/" onClick={() => this.getHomePosts()}>
           Home
         </Link>
-
+        <CategoryList
+          caterogies={categories}
+          dispatch={dispatch}
+        />
       </nav>
     );
   }

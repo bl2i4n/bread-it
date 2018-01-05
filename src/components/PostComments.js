@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import CommentDetail from './components/CommentDetail';
+import CommentDetail from './CommentDetail';
 import {fetchPostComments} from '../utils/readableAPI';
 import {commentsSet} from '../state/comments/actions';
 

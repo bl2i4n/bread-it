@@ -13,7 +13,7 @@ import {
   fetchCategoryPosts,
   fetchPosts,
   fetchPostByID
-} from '../utils/readableAPI';
+} from './src/utils/readableAPI';
 
 
 class App extends Component {
