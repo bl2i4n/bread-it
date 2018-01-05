@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from '../logo.svg';
+import '../App.css';
 import {connect} from 'react-redux';
 import {Route, withRouter} from 'react-router-dom';
 
-import PostList from './components/PostList';
-import NavBar from './components/Nav';
-import PostDetail from './components/PostDetail';
+import PostList from './PostList';
+import NavBar from './Nav';
+import PostDetail from './PostDetail';
 
 import {
   fetchCategories,
   fetchCategoryPosts,
   fetchPosts,
   fetchPostByID
-} from './src/utils/readableAPI';
+} from '../utils/readableAPI';
+
+import {categoriesSet} from '../state/categories/actions';
+import {postsSet} from '../state/posts/actions';
 
 
 class App extends Component {
@@ -26,6 +29,10 @@ class App extends Component {
     const locationPieces = location.pathname.split('/');
     if(locationPieces.length === 3) {
       fetchPostByID(locationPieces[2]).then((post) => {
+        dispatch(postsSet[post]);
+      });
+    } else if (locationPieces.length === 2 && locationPieces[0] === locationPieces[1]) {
+      fetchPosts().then((posts) => {
         dispatch(postsSet(posts));
       });
     } else {

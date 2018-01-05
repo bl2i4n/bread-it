@@ -21,7 +21,7 @@ class NavBar extends Component {
           Home
         </Link>
         <CategoryList
-          caterogies={categories}
+          categories={categories}
           dispatch={dispatch}
         />
       </nav>

@@ -5,15 +5,17 @@ import {fetchCategoryPosts} from '../utils/readableAPI';
 import {postsSet} from '../state/posts/actions';
 
 class CategoryListItem extends Component {
+
+  getCategoryPosts = () => {
+    const {dispatch, category} = this.props;
+    fetchCategoryPosts(category.path).then(
+      (posts) => {
+        dispatch(postsSet(posts));
+      }
+    );
+  }
+
   render(){
-    getCategoryPosts = () => {
-      const {dispatch, category} = this.props;
-      fetchCategoryPosts(category.path).then(
-        (posts) => {
-          dispatch(postsSet(posts));
-        }
-      );
-    }
 
     const {category} = this.props;
     return (

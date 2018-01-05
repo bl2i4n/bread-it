@@ -6,8 +6,8 @@ import {commentsSet} from '../state/comments/actions';
 class PostComments extends Component {
   componentDidMount(){
     const {postId, dispatch} = this.props;
-    fetchPostComments(postId).then((rest) => {
-      dispatch(commentsSet(rest));
+    fetchPostComments(postId).then((res) => {
+      dispatch(commentsSet(res));
     });
   };
 
