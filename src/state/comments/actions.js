@@ -1,3 +1,5 @@
+import {sendScoreUpdate} from '../../utils/readableAPI';
+
 import {
      COMMENTS_SET,
      COMMENTS_CREATE,
@@ -36,4 +38,29 @@ import {
              comments
          }
      }
- }
+
+  export const commentsVote = (id, direction) => {
+    return (dispatch, getState) => {
+      const {items} = getState().comments;
+      sendScoreUpdate(id, 'comments', direction);
+      let score = items.find((item) => {
+        return item.id === id;
+      }).voteScore;
+
+      if (direction === 'upVote'){
+        score += 1;
+      } else {
+        score -= 1;
+      }
+
+      dispatch({
+        type: COMMENTS_UPDATE,
+        data: {
+          id,
+          voteScore: score
+        }
+      })
+
+    }
+
+};
