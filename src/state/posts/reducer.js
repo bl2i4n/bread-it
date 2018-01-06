@@ -1,7 +1,6 @@
 import {
      POSTS_CREATE,
      POSTS_UPDATE,
-     POSTS_DELETE,
      POSTS_SORT,
      POSTS_SET
 } from './constants';
@@ -22,9 +21,16 @@ export default (state = defaultState, action) => {
        case POSTS_CREATE:
            return state;
        case POSTS_UPDATE:
-           return state;
-       case POSTS_DELETE:
-           return state;
+           return Object.assign({}, state, {
+             items: state.items.reduce((memo, curVal) => {
+               if (data.id === curVal.id) {
+                 memo.push(Object.assign({}, curVal, data));
+               } else {
+                 memo.push(curVal);
+               }
+               return memo;
+             }, [])
+           });
        case POSTS_SORT:
            return Object.assign({}, state, {
                order: data.property

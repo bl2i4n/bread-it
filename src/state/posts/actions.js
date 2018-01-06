@@ -1,3 +1,4 @@
+import {sendScoreUpdate} from '../../utils/readableAPI';
 import {
      POSTS_CREATE,
      POSTS_UPDATE,
@@ -37,3 +38,28 @@ import {
          }
      }
  }
+
+ export const postsVote = (id, direction) => {
+   return (dispatch, getState) => {
+     const {items} = getState().posts;
+     sendScoreUpdate(id, 'posts', direction);
+     let score = items.find((item) => {
+       return item.id === id;
+     }).voteScore;
+
+     if (direction === 'upVote') {
+       score += 1;
+     } else {
+       score -= 1;
+     }
+
+     dispatch({
+       type: POSTS_UPDATE,
+       data: {
+         id,
+         voteScore: score
+       }
+     })
+   }
+
+ };
