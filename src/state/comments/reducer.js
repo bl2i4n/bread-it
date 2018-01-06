@@ -22,7 +22,7 @@ export default (state = defaultState, action) => {
            return state;
        case COMMENTS_UPDATE:
            return Object.assign({}, state, {
-             items: state.items.reduce(memo, curVal) => {
+             items: state.items.reduce((memo, curVal) => {
                if (data.id === curVal.id) {
                  memo.push(Object.assign({}, curVal, data));
                } else {

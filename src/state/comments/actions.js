@@ -38,6 +38,7 @@ import {
              comments
          }
      }
+  }
 
   export const commentsVote = (id, direction) => {
     return (dispatch, getState) => {
