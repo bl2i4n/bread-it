@@ -61,6 +61,7 @@ render(){
             return(
               <PostList
                 posts={posts}
+                dispatch={dispatch}
               />
             )
           }
@@ -71,6 +72,7 @@ render(){
           return (
             <PostList
               posts={posts}
+              dispatch={dispatch}
             />
           )
         }

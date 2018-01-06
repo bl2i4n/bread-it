@@ -12,15 +12,20 @@ class PostComments extends Component {
   };
 
   render(){
-    const {comments} = this.props;
+    const {comments, dispatch} = this.props;
     return (
-      <div>
+      <ul className="list-container">
         {comments.map((comment) => {
           return (
-            <CommentDetail comment={comment} />
+            <li key={comment.id}>
+              <CommentDetail
+                comment={comment}
+                dispatch={dispatch}
+              />
+            </li>
           )
         })}
-      </div>
+      </ul>
     );
   };
 }

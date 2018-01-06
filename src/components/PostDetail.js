@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import PostComments from './PostComments';
+import {Link} from 'react-router-dom';
+import {humanDateFromTimestamp} from '../utils/formatters';
 
 class PostDetail extends Component {
   render(){
@@ -11,9 +13,9 @@ class PostDetail extends Component {
     return (
       <div className="container">
         <h1>{post.title}</h1>
-        <h2>By {post.author}</h2>
-        <h3>On {post.timestamp}</h3>
-        <h3>In {post.category}</h3>
+        <span>By {post.author}</span>
+        <span> on {humanDateFromTimestamp}(post.timestamp)</span>
+        <span> in <Link to={'/' + post.category}>{post.category}</Link></span>
         <p>{post.body}</p>
         <PostComments
           postId={post.id}

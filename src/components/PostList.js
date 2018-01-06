@@ -3,17 +3,22 @@ import PostListItem from './PostListItem';
 
 class PostList extends Component {
   render() {
-    const {posts} = this.props;
+    const {posts, dispatch} = this.props;
     return (
-      <ul className="postList">
-        {posts.map((post) => {
-          return (
-            <li key={post.id}>
-              <PostListItem post={post}/>
-            </li>
-          )
-        })}
-      </ul>
+      <div className="container">
+        <ul className="postList">
+          {posts.map((post) => {
+            return (
+              <li key={post.id}>
+                <PostListItem
+                  post={post}
+                  dispatch={dispatch}
+                />
+              </li>
+            )
+          })}
+        </ul>
+      </div>
     );
   }
 

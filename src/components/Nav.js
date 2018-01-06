@@ -17,9 +17,11 @@ class NavBar extends Component {
     const {dispatch, categories} = this.props;
     return (
       <nav id="navbar">
-        <Link to="/" onClick={() => this.getHomePosts()}>
-          Home
-        </Link>
+        <div className="homeBtn">
+          <Link to="/" onClick={() => this.getHomePosts()}>
+            Home
+          </Link>
+        </div>
         <CategoryList
           categories={categories}
           dispatch={dispatch}
