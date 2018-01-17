@@ -56,7 +56,7 @@ render(){
         <Route
           exact
           path="/"
-          render={({match})} = {
+          render={({match}) => {
           return (
             <PostList posts={posts.item} dispatch={dispatch} match={match} />
             );
@@ -112,7 +112,7 @@ render(){
           render={({match}) => {
             const {id} = match.params;
             const post = this.findPost(id);
-            return <CommentForm post={post} dispatch={dispatch} /;>
+            return <CommentForm post={post} dispatch={dispatch} />
           }}
         />
     </div>
