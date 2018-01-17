@@ -7,6 +7,7 @@ import {Route, withRouter} from 'react-router-dom';
 import PostList from './PostList';
 import NavBar from './Nav';
 import PostDetail from './PostDetail';
+import PostForm from './PostForm';
 
 import {
   fetchCategories,
@@ -21,6 +22,10 @@ import {postsSet} from '../state/posts/actions';
 
 class App extends Component {
 
+  moveToNewPost = () => {
+    this.props.history.push("/posts/new");
+  }
+
   componentDidMount() {
     const {dispatch, location} = this.props;
     fetchCategories().then((categories) => {
@@ -28,6 +33,9 @@ class App extends Component {
     });
     const locationPieces = location.pathname.split('/');
     if(locationPieces.length === 3) {
+      if (locationPieces[2] === 'new'){
+        return;
+      }
       fetchPostByID(locationPieces[2]).then((post) => {
         dispatch(postsSet[post]);
       });
@@ -47,6 +55,16 @@ class App extends Component {
     return posts.find((post) => post.id === id);
   };
 
+  checkCategory = (name) => {
+    const {categories} = this.props;
+    if(categories.find((cat) => {
+      return cat.path === name;
+    })) {
+      return true
+    }
+    return false;
+  };
+
 render(){
     const { dispatch, posts, categories, comments} = this.props;
 
@@ -62,24 +80,46 @@ render(){
               <PostList
                 posts={posts}
                 dispatch={dispatch}
+                newPost={this.moveToNewPost}
               />
             )
           }
       } />
 
-    <Route exact path="/:category" render={
+    <Route exact path="/posts/new" render={
         () => {
           return (
-            <PostList
-              posts={posts}
+            <PostForm
               dispatch={dispatch}
+              categories={categories}
             />
           )
         }
     } />
+  <Route exact path="/:category" render={
+      ({match}) => {
+        console.log(match);
+        if (!this.checkCategory(match.url.substr(1))) {
+          return null;
+        }
+        return (
+          <PostList
+            posts={posts}
+            dispatch={dispatch}
+            newPost={this.moveToNewPost}
+          />
+        )
+
+      }
+
+  } />
 
   <Route path="/:category/:id" render={
         ({match}) => {
+          if (!this.checkCategory(match.url.substr(1).split('/')[0])) {
+            return null;
+          }
+
           const post = this.findPost(match.params.id);
           return (
             <PostDetail

@@ -1,23 +1,27 @@
 import React, {Component} from 'react';
 import PostListItem from './PostListItem';
+import ActionButton from './ActionButton';
 
 class PostList extends Component {
   render() {
-    const {posts, dispatch} = this.props;
+    const {posts, dispatch, newPost} = this.props;
     return (
-      <div className="container">
-        <ul className="postList">
-          {posts.map((post) => {
-            return (
-              <li key={post.id}>
-                <PostListItem
-                  post={post}
-                  dispatch={dispatch}
-                />
-              </li>
-            )
-          })}
-        </ul>
+      <div>
+       <div className="container">
+         <ul className="list-container">
+           {posts.map((post) => {
+             return (
+               <li key={post.id}>
+                 <PostListItem
+                     post={post}
+                     dispatch={dispatch}
+                 />
+               </li>
+             )
+           })}
+         </ul>
+       </div>
+       <ActionButton onClick={() => newPost()}/>
       </div>
     );
   }

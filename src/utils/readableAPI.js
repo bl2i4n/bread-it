@@ -42,3 +42,8 @@ export const sendScoreUpdate = (id, type, option) => {
   return fetch(`http://localhost:3002/${type}/${id}`, postHeaders(data))
     .then((res) => res.json());
 };
+
+export const sendNewPost = (data) => {
+  return fetch(`http://localhost:3002/posts`, postHeaders(data))
+    .then((res) => res.json());
+};

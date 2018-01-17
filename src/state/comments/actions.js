@@ -4,7 +4,6 @@ import {
      COMMENTS_SET,
      COMMENTS_CREATE,
      COMMENTS_UPDATE,
-     COMMENTS_DELETE,
      COMMENTS_SORT
  } from './constants';
 
