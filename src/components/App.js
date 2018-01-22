@@ -60,14 +60,7 @@ render(){
           return (
             <PostList posts={posts.item} dispatch={dispatch} match={match} />
             );
-          }}/>
-          return null;
-        }
-        return (
-          <PostList
-            posts={posts}
-            dispatch={dispatch}
-            newPost={this.moveToNewPost}
+          }}
         />
         <Route
           exact
