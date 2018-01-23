@@ -11,7 +11,7 @@ class NavBar extends Component {
     fetchPosts().then((posts) => {
       dispatch(postsSet(posts));
     });
-  }
+  };
 
   render() {
     const {dispatch, categories} = this.props;

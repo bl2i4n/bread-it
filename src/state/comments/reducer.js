@@ -7,6 +7,7 @@ import {
 
 const defaultState = {
    order: 'voteScore',
+   addComment: false,
    items: []
 };
 
@@ -32,7 +33,10 @@ export default (state = defaultState, action) => {
              }, [])
            });
        case COMMENTS_SORT:
-           return state;
+           return Object.assign({}, state, {
+             orderBy: data.property,
+             orderDir: data.direction
+           });
        default:
            return state;
    }

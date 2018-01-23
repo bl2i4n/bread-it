@@ -8,7 +8,7 @@ import PostList from './PostList';
 import NavBar from './Nav';
 import PostDetail from './PostDetail';
 import PostForm from './PostForm';
-import CommentForm from './CommentForm';
+import CommentForm from './CommentForm.js';
 
 import {
   fetchCategories,

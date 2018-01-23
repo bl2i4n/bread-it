@@ -34,72 +34,72 @@ class PostForm extends Component {
        const body = post ? post.body : '';
        const category = post ? post.category : '';
        return (
-           <div className="container">
-               <form id="post-form" className="post-form" onSubmit={this.handleSubmit}>
-                   <label className="form-label">
-                       <div className="form-label-text">
-                           Title
-                       </div>
-                       <input
-                           className="form-item"
-                           id="title"
-                           name="title"
-                           type="text"
-                           defaultValue={title}
-                           ref={(input) => this.title = input}
-                       />
-                   </label>
-                   <label className="form-label">
-                       <div className="form-label-text">
-                           Author
-                       </div>
-                       <input
-                           className="form-item"
-                           id="author"
-                           name="author"
-                           type="text"
-                           defaultValue={author}
-                           ref={(input) => this.author = input}
-                       />
-                   </label>
-                   <label className="form-label">
-                       <div className="form-label-text">
-                           Body
-                       </div>
-                       <textarea
-                           form="post-form"
-                           className="form-item"
-                           id="body"
-                           name="body"
-                           type="text"
-                           defaultValue={body}
-                           ref={(input) => this.body = input}
-                       ></textarea>
-                   </label>
-                   <label className="form-label">
-                       <div className="form-label-text">
-                           Category
-                       </div>
-                       <select
-                           className="form-item"
-                           id="category"
-                           name="category"
-                           type="select"
-                           defaultValue={category}
-                           ref={(input) => this.category = input}
-                       >
-                           {categories.map((cat) => {
-                               return (
-                                   <option key={cat.name}>
-                                       {cat.name}
-                                   </option>
-                               );
-                           })}
-                       </select>
-                   </label>
-                   <input type="submit" value="Submit" className="form-submit-button" />
-               </form>
-           </div>
+       <div className="container">
+         <form id="post-form" className="post-form" onSubmit={this.handleSubmit}>
+           <label className="form-label">
+               <div className="form-label-text">
+                   Title
+               </div>
+               <input
+                   className="form-item"
+                   id="title"
+                   name="title"
+                   type="text"
+                   defaultValue={title}
+                   ref={(input) => this.title = input}
+               />
+           </label>
+           <label className="form-label">
+               <div className="form-label-text">
+                   Author
+               </div>
+               <input
+                   className="form-item"
+                   id="author"
+                   name="author"
+                   type="text"
+                   defaultValue={author}
+                   ref={(input) => this.author = input}
+               />
+           </label>
+           <label className="form-label">
+               <div className="form-label-text">
+                   Body
+               </div>
+               <textarea
+                   form="post-form"
+                   className="form-item"
+                   id="body"
+                   name="body"
+                   type="text"
+                   defaultValue={body}
+                   ref={(input) => this.body = input}
+               ></textarea>
+           </label>
+           <label className="form-label">
+               <div className="form-label-text">
+                   Category
+               </div>
+               <select
+                   className="form-item"
+                   id="category"
+                   name="category"
+                   type="select"
+                   defaultValue={category}
+                   ref={(input) => this.category = input}
+               >
+                   {categories.map((cat) => {
+                       return (
+                           <option key={cat.name}>
+                               {cat.name}
+                           </option>
+                       );
+                   })}
+               </select>
+           </label>
+           <input type="submit" value="Submit" className="form-submit-button" />
+         </form>
+       </div>
        );
    }
 }

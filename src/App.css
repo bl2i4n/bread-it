@@ -82,10 +82,9 @@ body {
 }
 
 .action-button {
- position: absolute;
+ position: fixed;
  bottom: 1rem;
  right: 1rem;
- color: white;
  background-color: #BF4B96;
  font-size: 3rem;
  display: flex;
@@ -96,16 +95,24 @@ body {
  justify-content: center;
 }
 
+.action-button a {
+  display: flex;
+  color: white;
+}
+
 .post-form {
  display: flex;
  flex-direction: column;
  flex: 1;
 }
 
+.post-body {
+  padding: 1rem 0;
+}
+
 .form-item {
  box-sizing: border-box;
  font-size: 1rem;
- padding: 0 1rem;
  border: 1px solid #113E2E;
  width: 100%;
 }
@@ -119,4 +126,31 @@ body {
  background: #BF4B96;
  margin-top: 1rem;
  width: 25%;
+}
+
+.inline-form-label {
+ margin-top: 1rem;
+ padding: 01rem;
+ display: flex;
+ flex: 1;
+}
+
+.inline-form-label select {
+  margin-left: 1rem;
+}
+
+.title-vote {
+  display: flex;
+  flex: 1;
+  justify-content: left;
+  align-items: center;
+}
+
+.title-vote h1 {
+  padding-left: 1rem;
+}
+
+.sort-by-container {
+  border-top: 1px solid #113E2E;
+  padding-top: 1rem;
 }

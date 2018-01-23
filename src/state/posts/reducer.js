@@ -6,7 +6,8 @@ import {
 } from './constants';
 
 const defaultState = {
-   order: 'voteScore',
+   orderBy: 'voteScore',
+   orderDir: 'desc',
    items: []
 };
 
@@ -33,7 +34,8 @@ export default (state = defaultState, action) => {
            });
        case POSTS_SORT:
            return Object.assign({}, state, {
-               order: data.property
+               orderBy: data.property,
+               orderDir: data.direction
            });
        default:
            return state;
