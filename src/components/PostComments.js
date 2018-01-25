@@ -9,13 +9,13 @@ class PostComments extends Component {
     fetchPostComments(postId).then((res) => {
       dispatch(commentsSet(res));
     });
-  };
+  }
 
   render(){
     const {comments, dispatch} = this.props;
     return (
       <ul className="list-container">
-        {comments.map((comment) => {
+        {comments.map(comment => {
           return (
             <li key={comment.id}>
               <CommentDetail
@@ -27,7 +27,7 @@ class PostComments extends Component {
         })}
       </ul>
     );
-  };
+  }
 }
 
 export default PostComments;

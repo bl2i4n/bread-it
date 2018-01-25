@@ -24,7 +24,7 @@ class PostForm extends Component {
       category: this.category.value,
       body: this.body.value,
     }
-    dispatch(postsNew(post))
+    dispatch(postsNew(post));
   };
 
     render() {
@@ -88,7 +88,7 @@ class PostForm extends Component {
                    defaultValue={category}
                    ref={(input) => this.category = input}
                >
-                   {categories.map((cat) => {
+                   {categories.map(cat => {
                        return (
                            <option key={cat.name}>
                                {cat.name}
