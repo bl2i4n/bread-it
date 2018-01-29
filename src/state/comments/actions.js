@@ -53,7 +53,7 @@ import {
       }).voteScore;
 
       if (direction === 'upVote'){
-        score += 1;
+        score = 1;
       } else {
         score -= 1;
       }
@@ -84,4 +84,17 @@ export const commentsNew = (data) => {
    })
 
   }
+};
+
+export const commentsDelete = id => {
+   return dispatch => {
+     sendDeleteComment(id);
+     dispatch({
+       type: COMMENTS_UPDATE,
+       data: {
+         id,
+         deleted: true
+       }
+    });
+  };
 };

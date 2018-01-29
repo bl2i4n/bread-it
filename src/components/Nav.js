@@ -18,9 +18,7 @@ class NavBar extends Component {
     return (
       <nav id="navbar">
         <div className="homeBtn">
-          <Link to="/" onClick={() => this.getHomePosts()}>
-            Home
-          </Link>
+          <Link to="/">Home</Link>
         </div>
         <CategoryList
           categories={categories}

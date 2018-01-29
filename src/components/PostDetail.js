@@ -7,6 +7,8 @@ import ActionButton from "./ActionButton";
 import SortBy from "./SortBy";
 import {fetchPostByID} from "../utils/readableAPI";
 import {postsSet} from "../state/posts/actions";
+import EditDelete from './EditDelete';
+
 
 class PostDetail extends Component {
 
@@ -27,6 +29,7 @@ class PostDetail extends Component {
 
      return (
        <div className="container">
+         <EditDelete type="post" id={post.id} post={post} dispatch={dispatch} />
          <div className="post-info-container">
            <div className="title-vote">
              <Voting
@@ -54,6 +57,7 @@ class PostDetail extends Component {
            comments={comments}
            dispatch={dispatch}
          />
+       <PostComments post={post} comments={comments} dispatch={dispatch} />
        <ActionButton destination={`/${post.category}/${post.id}/comment`} />
        </div>
      );

@@ -2,17 +2,18 @@ import React, {Component} from 'react';
 import CommentDetail from './CommentDetail';
 import {fetchPostComments} from '../utils/readableAPI';
 import {commentsSet} from '../state/comments/actions';
+import EditDelete from './EditDelete';
 
 class PostComments extends Component {
   componentDidMount(){
-    const {postId, dispatch} = this.props;
-    fetchPostComments(postId).then((res) => {
+    const {post, dispatch} = this.props;
+    fetchPostComments(post.id).then((res) => {
       dispatch(commentsSet(res));
     });
   }
 
   render(){
-    const {comments, dispatch} = this.props;
+    const {comments, dispatch, post} = this.props;
     return (
       <ul className="list-container">
         {comments.map(comment => {
@@ -20,6 +21,12 @@ class PostComments extends Component {
             <li key={comment.id}>
               <CommentDetail
                 comment={comment}
+                dispatch={dispatch}
+              />
+              <EditDelete
+                type="comment"
+                id={comment.id}
+                post={post}
                 dispatch={dispatch}
               />
             </li>

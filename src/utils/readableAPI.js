@@ -11,6 +11,14 @@ const postHeaders = (data) => {
   };
 };
 
+const deleteHeaders = () => {
+   return {
+     method: 'DELETE',
+     headers: headers
+   };
+};
+
+
 export const fetchCategories = () => {
   return fetch(`http://localhost:3002/categories`, {headers})
     .then((res) => res.json())
@@ -51,4 +59,12 @@ export const sendNewPost = (data) => {
 export const sendNewComment = (data) => {
   return fetch(`http://localhost:3002/comments`, postHeaders(data))
     .then((res) => res.json());
+};
+
+export const sendDeleteComment = id => {
+   return fetch(`http://localhost:3002/comments/${id}`, deleteHeaders());
+};
+
+export const sendDeletePost = id => {
+   return fetch(`http://localhost:3002/posts/${id}`, deleteHeaders());
 };

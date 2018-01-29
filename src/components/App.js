@@ -105,19 +105,28 @@ import React, { Component } from "react";
 
  const mapStateToProps = state => {
    const { posts, comments } = state;
-   const sortedPosts = posts.items.sort((postA, postB) => {
-     if (posts.orderDir === "asc") {
-       return postA[posts.orderBy] >= postB[posts.orderBy];
-     }
-     return postA[posts.orderBy] <= postB[posts.orderBy];
-   });
+   const sortedPosts = posts.items
+     .sort((postA, postB) => {
+       if (posts.orderDir === 'asc') {
+         return postA[posts.orderBy] >= postB[posts.orderBy];
+       }
+       return postA[posts.orderBy] <= postB[posts.orderBy];
+     })
+     .filter(post => {
+       return post.deleted !== true;
+     });
 
-   const sortedComments = comments.items.sort((commentA, commentB) => {
-     if (comments.orderDir === "asc") {
-       return commentA[comments.orderBy] >= commentB[comments.orderBy];
-     }
-     return commentA[comments.orderBy] <= commentB[comments.orderBy];
-   });
+   //Sort Comments and make sure that they nor their parent is deleted
+   const sortedComments = comments.items
+     .sort((commentA, commentB) => {
+       if (comments.orderDir === 'asc') {
+         return commentA[comments.orderBy] >= commentB[comments.orderBy];
+       }
+       return commentA[comments.orderBy] <= commentB[comments.orderBy];
+     })
+     .filter(comment => {
+       return comment.deleted !== true && comment.parentDeleted !== true;
+     });;
 
    const newState = Object.assign({}, state, {
      posts: Object.assign({}, posts, {

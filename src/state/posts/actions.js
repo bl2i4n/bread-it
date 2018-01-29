@@ -54,7 +54,7 @@ import {
      }).voteScore;
 
      if (direction === 'upVote') {
-       score += 1;
+       score = 1;
      } else {
        score -= 1;
      }
@@ -81,6 +81,19 @@ import {
        type: POSTS_CREATE,
        data: {
          post
+       }
+     });
+   };
+ };
+
+ export const postsDelete = id => {
+   return dispatch => {
+     sendDeletePost(id);
+     dispatch({
+       type: POSTS_UPDATE,
+       data: {
+         id,
+         deleted: true
        }
      });
    };
