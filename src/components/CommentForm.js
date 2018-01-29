@@ -1,14 +1,23 @@
 import React, {Component} from "react";
 import {commentsNew} from "../state/comments/actions";
+import {withRouter} from "react-router";
+import {fetchPostByID} from "../utils/readableAPI";
+import {postsSet} from "../state/posts/actions";
 
 class CommentForm extends Component {
   componentDidMount(){
-    console.log(this.props);
+    const {post, dispatch, match} = this.props;
+    if (post) {
+      return;
+    }
+    fetchPostByID(match.params.id).then(post => {
+      dispatch(postsSet([post]));
+    });
   }
 
   handleSubmit = e => {
     e.preventDefault();
-    const {dispatch, post} = this.props;
+    const {dispatch, post, history} = this.props;
 
     if (!this.author.value) {
       alert("Author field cannot be empty");
@@ -23,6 +32,7 @@ class CommentForm extends Component {
       parentId: post.id
     };
     dispatch(commentsNew(comment));
+    history.push(history.location.pathname.replace("/comment", ""));
   };
   render() {
     const {comment} = this.props;
@@ -66,4 +76,4 @@ class CommentForm extends Component {
 
 }
 
-export default CommentForm;
+export default withRouter(CommentForm);

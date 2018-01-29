@@ -64,9 +64,9 @@ import {
           id,
           voteScore: score
         }
-      })
+      });
 
-    }
+    };
 
 };
 

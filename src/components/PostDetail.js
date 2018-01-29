@@ -54,7 +54,7 @@ class PostDetail extends Component {
            comments={comments}
            dispatch={dispatch}
          />
-         <ActionButton destination={`/posts/${post.id}/comment`} />
+       <ActionButton destination={`/${post.category}/${post.id}/comment`} />
        </div>
      );
    }

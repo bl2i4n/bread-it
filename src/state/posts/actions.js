@@ -65,8 +65,8 @@ import {
          id,
          voteScore: score
        }
-     })
-   }
+     });
+   };
 
  };
 
@@ -82,6 +82,6 @@ import {
        data: {
          post
        }
-     })
-   }
+     });
+   };
  };
