@@ -1,6 +1,7 @@
 import {
   sendScoreUpdate,
-  sendNewComment
+  sendNewComment,
+  sendDeleteComment
 } from '../../utils/readableAPI';
 import {uuid} from '../../utils/formatters';
 

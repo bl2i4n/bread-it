@@ -1,6 +1,7 @@
 import {
   sendScoreUpdate,
-  sendNewPost
+  sendNewPost,
+  sendDeletePost
 } from '../../utils/readableAPI';
 
 import {uuid} from '../../utils/formatters';
